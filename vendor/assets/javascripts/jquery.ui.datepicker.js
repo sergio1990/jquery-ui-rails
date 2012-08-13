@@ -906,18 +906,18 @@ $.extend(Datepicker.prototype, {
 		inst.selectedMonth = inst.currentMonth = month;
 		inst.selectedYear = inst.currentYear = year;
 		this._selectDate(id, this._formatDate(inst,
-			inst.currentDay, inst.currentMonth, inst.currentYear));
+			inst.currentDay, inst.currentMonth, inst.currentYear), td);
 	},
 
 	/* Erase the input field and hide the date picker. */
 	_clearDate: function(id) {
 		var target = $(id);
 		var inst = this._getInst(target[0]);
-		this._selectDate(target, '');
+		this._selectDate(target, '', false);
 	},
 
 	/* Update the input field with the selected date. */
-	_selectDate: function(id, dateStr) {
+	_selectDate: function(id, dateStr, td) {
 		var target = $(id);
 		var inst = this._getInst(target[0]);
 		dateStr = (dateStr != null ? dateStr : this._formatDate(inst));
@@ -926,7 +926,7 @@ $.extend(Datepicker.prototype, {
 		this._updateAlternate(inst);
 		var onSelect = this._get(inst, 'onSelect');
 		if (onSelect)
-			onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);  // trigger custom callback
+			onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst, td !== false ? td : '']);  // trigger custom callback
 		else if (inst.input)
 			inst.input.trigger('change'); // fire the change event
 		if (inst.inline)
