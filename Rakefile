@@ -9,7 +9,7 @@ def version
 end
 
 task :submodule do
-  # sh 'git submodule update --init' unless File.exist?('jquery-ui/README.md')
+  sh 'git submodule update --init' unless File.exist?('jquery-ui/README.md')
 end
 
 def get_js_dependencies(basename)

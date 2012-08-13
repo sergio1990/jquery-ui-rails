@@ -3,7 +3,7 @@ require File.expand_path('../lib/jquery/ui/rails/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "jquery-ui-rails"
-  s.version     = "1.1.3"
+  s.version     = "1.1.4"
   s.authors     = ["Jo Liss", "sergio1990"]
   s.email       = ["joliss42@gmail.com", "sergeg1990@gmail.com"]
   s.homepage    = "https://github.com/joliss/jquery-ui-rails"
