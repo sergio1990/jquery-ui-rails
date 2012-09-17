@@ -1583,15 +1583,14 @@ $.extend(Datepicker.prototype, {
 							((!otherMonth || showOtherMonths) && daySettings[2] ? ' title="' + daySettings[2] + '"' : '') + // cell title
 							(daySettings[3] ? ' data-content="' + daySettings[3] + '"' : '') +
 							(daySettings[4] ? ' data-original-title="' + daySettings[4] + '"' : '') +
-							(daySettings[5] ? ' id="' + daySettings[5] + '"' : '') +
-							(daySettings[6] ? ' style="background-color: ' + daySettings[6] + ' !important;"' : '') +
+							(daySettings[5] ? ' id="' + daySettings[5] + '"' : '') +							
 							(unselectable ? '' : ' data-handler="selectDay" data-event="click" data-month="' + printDate.getMonth() + '" data-year="' + printDate.getFullYear() + '"') + '>' + // actions
 							(otherMonth && !showOtherMonths ? '&#xa0;' : // display for other months
 							(unselectable ? '<span class="ui-state-default">' + printDate.getDate() + '</span>' : '<a class="ui-state-default' +
 							(printDate.getTime() == today.getTime() ? ' ui-state-highlight' : '') +
 							(printDate.getTime() == currentDate.getTime() ? ' ui-state-active' : '') + // highlight selected day
 							(otherMonth ? ' ui-priority-secondary' : '') + // distinguish dates from other months
-							'" href="#">' + printDate.getDate() + '</a>')) + '</td>'; // display selectable date
+							'" href="#"'+ (daySettings[6] ? ' style="background: none; background-color: ' + daySettings[6] + ' !important;"' : '') + '>' + printDate.getDate() + '</a>')) + '</td>'; // display selectable date
 						printDate.setDate(printDate.getDate() + 1);
 						printDate = this._daylightSavingAdjust(printDate);
 					}
