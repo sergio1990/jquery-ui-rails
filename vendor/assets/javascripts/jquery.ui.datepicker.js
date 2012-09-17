@@ -906,18 +906,18 @@ $.extend(Datepicker.prototype, {
 		inst.selectedMonth = inst.currentMonth = month;
 		inst.selectedYear = inst.currentYear = year;
 		this._selectDate(id, this._formatDate(inst,
-			inst.currentDay, inst.currentMonth, inst.currentYear), td);
+			inst.currentDay, inst.currentMonth, inst.currentYear));
 	},
 
 	/* Erase the input field and hide the date picker. */
 	_clearDate: function(id) {
 		var target = $(id);
 		var inst = this._getInst(target[0]);
-		this._selectDate(target, '', false);
+		this._selectDate(target, '');
 	},
 
 	/* Update the input field with the selected date. */
-	_selectDate: function(id, dateStr, td) {
+	_selectDate: function(id, dateStr) {
 		var target = $(id);
 		var inst = this._getInst(target[0]);
 		dateStr = (dateStr != null ? dateStr : this._formatDate(inst));
@@ -926,7 +926,7 @@ $.extend(Datepicker.prototype, {
 		this._updateAlternate(inst);
 		var onSelect = this._get(inst, 'onSelect');
 		if (onSelect)
-			onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst, td !== false ? td : '']);  // trigger custom callback
+			onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);  // trigger custom callback
 		else if (inst.input)
 			inst.input.trigger('change'); // fire the change event
 		if (inst.inline)
@@ -1584,6 +1584,7 @@ $.extend(Datepicker.prototype, {
 							(daySettings[3] ? ' data-content="' + daySettings[3] + '"' : '') +
 							(daySettings[4] ? ' data-original-title="' + daySettings[4] + '"' : '') +
 							(daySettings[5] ? ' id="' + daySettings[5] + '"' : '') +
+							(daySettings[6] ? ' style="background-color: ' + daySettings[6] + ' !important;"' : '') +
 							(unselectable ? '' : ' data-handler="selectDay" data-event="click" data-month="' + printDate.getMonth() + '" data-year="' + printDate.getFullYear() + '"') + '>' + // actions
 							(otherMonth && !showOtherMonths ? '&#xa0;' : // display for other months
 							(unselectable ? '<span class="ui-state-default">' + printDate.getDate() + '</span>' : '<a class="ui-state-default' +
